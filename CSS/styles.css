@@ -216,6 +216,7 @@ body {
 	list-style: none;
 	margin: 0;
 	padding: 0;
+  margin-top: 3.5%;
 	text-align: center;
     width: 95%;
         margin-left: 0;
@@ -226,7 +227,7 @@ nav li {
 nav a {
 	display: inline-block;
     background: #FBBF77;
-    border-radius: 20px;
+    border-radius: 100px;
 	padding: 20px;
 	text-decoration: none;
 	color: #FF8C00;
@@ -257,8 +258,77 @@ nav a:hover {
     }
   }
 
-  @media (max-width: 670px) {
+  @media (max-width: 780px) {
     li a[href="#"]:first-child, li a[href="#"]:nth-child(2) {
       display: none;
     }
   }
+
+  
+  
+  li {
+    list-style-type: none;
+  }
+
+  .logo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 70px;
+    margin: 20px;
+    background-color: #FBBF77;
+    border-radius: 10px;
+  }
+
+  li.right {
+    margin-top: -2%;
+    margin-right: 1%;
+    float: right;
+  }
+
+  li.right a {
+    text-transform: none;
+  }
+  
+  @media (max-width: 780px) {
+    li.right a[href="#"]:first-child, li a[href="#"]:nth-child(2) {
+      display:block
+    }
+    li.right {
+      margin-top: 2%;
+    }
+  }
+
+  nav .right a {
+    padding: 0;
+  }
+
+  #red {
+    border-radius: 100px;
+  }
+
+  #red a {
+    padding: 15px;
+    color: #B7410E;
+  }
+
+  #yellow a {
+    background-color: #B7410E;
+    background: #B7410E;
+    color: #F79802;
+    padding: 15px;
+    border-radius: 10px;
+  }
+
+  .new-box {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 400px;
+    height: 300px;
+    margin: 100px 150px;
+    border-radius: 20px;
+    background-color: transparent;
+    border: 10px solid #FF9E3D;
+}
