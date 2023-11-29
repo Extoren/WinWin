@@ -215,6 +215,16 @@ body {
     border-right: 1px solid var(--search-border-color);
   }
 
+  .job-card-price,
+.job-detail-button,
+.job-card-buttons {
+  margin-top: auto;
+}
+
+
+.job-card-price {
+  font-weight: 600;
+}
 
 
 .wrapper {
