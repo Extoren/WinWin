@@ -7,10 +7,25 @@ wrapper.addEventListener("scroll", (e) => {
   : header.classList.remove("header-shadow");
 });
 
+// Check for saved theme on page load
+document.addEventListener("DOMContentLoaded", () => {
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) {
+    document.body.classList.add(savedTheme);
+  }
+});
+
 const toggleButton = document.querySelector(".dark-light");
 
 toggleButton.addEventListener("click", () => {
- document.body.classList.toggle("dark-mode");
+  document.body.classList.toggle("dark-mode");
+  
+  // Save the current theme to localStorage
+  if (document.body.classList.contains("dark-mode")) {
+    localStorage.setItem('theme', 'dark-mode');
+  } else {
+    localStorage.removeItem('theme');
+  }
 });
 
 const jobCards = document.querySelectorAll(".job-card");
@@ -48,39 +63,102 @@ function toggleLocations() {
 }
 
 
-function toggleCategoriesNav(show) {
-  var categoriesNav = document.querySelector('.Categories-nav');
-  categoriesNav.style.display = show ? 'block' : 'none';
+function simulateTyping(element, text) {
+  let i = 0;
+  const intervalId = setInterval(() => {
+    if (i < text.length) {
+      element.value += text[i];
+      i++;
+    } else {
+      clearInterval(intervalId);
+    }
+  }, 100); // adjust the typing speed here
 }
 
-
 function filterCategoriesNav() {
-  const input = document.getElementById('search-input');
-  const categories = document.getElementsByClassName('Categories-nav')[0].getElementsByTagName('p');
+  const input = document.querySelector('#search-input');
+  const categories = document.querySelectorAll('.Categories-nav p');
+
+  input.addEventListener('focus', () => {
+    const filter = input.value.toLowerCase();
+    categories.forEach(category => {
+      const categoryName = category.textContent.toLowerCase();
+      if (filter === '' || categoryName.startsWith(filter)) {
+        category.style.visibility = 'visible';
+        category.style.display = 'block';
+        category.style.pointerEvents = 'auto'; // enable pointer events
+      } else {
+        category.style.visibility = 'hidden';
+        category.style.display = 'none';
+        category.style.pointerEvents = 'none'; // disable pointer events
+      }
+    });
+  });
 
   input.addEventListener('input', () => {
     const filter = input.value.toLowerCase();
-    for (let i = 0; i < categories.length; i++) {
-      const category = categories[i];
+    categories.forEach(category => {
       const categoryName = category.textContent.toLowerCase();
-      if (categoryName.startsWith(filter)) {
+      if (filter === '' || categoryName.startsWith(filter)) {
+        category.style.visibility = 'visible';
         category.style.display = 'block';
+        category.style.pointerEvents = 'auto'; // enable pointer events
       } else {
+        category.style.visibility = 'hidden';
         category.style.display = 'none';
+        category.style.pointerEvents = 'none'; // disable pointer events
       }
-    }
+    });
   });
 
-  for (let i = 0; i < categories.length; i++) {
-    const category = categories[i];
-    category.addEventListener('click', () => {
-      input.value = category.textContent;
+  function hideCategories() {
+    categories.forEach(category => {
+      category.style.display = 'none';
     });
   }
+  
+  categories.forEach(category => {
+    category.addEventListener('click', () => {
+      input.value = ''; // clear the input value
+      simulateTyping(input, category.textContent);
+      hideCategories(); // hide all categories
+    });
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!event.target.closest('.Categories-nav') && !event.target.closest('#search-input')) {
+      categories.forEach(category => {
+        category.style.visibility = 'hidden';
+        category.style.display = 'none';
+        category.style.pointerEvents = 'none'; // disable pointer events
+      });
+    }
+  });
 }
 
-window.addEventListener('DOMContentLoaded', () => {
-  filterCategoriesNav();
+window.addEventListener('DOMContentLoaded', filterCategoriesNav);
+
+
+
+
+window.addEventListener('resize', function() {
+  var width = window.innerWidth;
+  var fullText = document.querySelectorAll('.full-text');
+  var shortText = document.querySelectorAll('.short-text');
+
+  if (width < 500) {
+    fullText.forEach(function(el) {
+      el.style.display = 'none';
+    });
+    shortText.forEach(function(el) {
+      el.style.display = 'inline';
+    });
+  } else {
+    fullText.forEach(function(el) {
+      el.style.display = 'inline';
+    });
+    shortText.forEach(function(el) {
+      el.style.display = 'none';
+    });
+  }
 });
-
-

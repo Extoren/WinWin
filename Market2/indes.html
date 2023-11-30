@@ -87,11 +87,15 @@
         <div class="wrapper">
          <div class="search-menu">
           <div class="search-bar">
-           <input type="text" class="search-box" autofocus />
-           <div class="search item">Gressklipping
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x">
-             <path d="M18 6L6 18M6 6l12 12" /></svg>
-           </div>
+              <div id="Color">
+                <span class="full-text">Velg en kategori ↑</span>
+                <span class="short-text">Velg ↑</span>
+              </div>
+            <div class="search item">Gressklipping
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x">
+                <path d="M18 6L6 18M6 6l12 12" />
+              </svg>
+            </div>
           </div>
           <div class="search-location" onclick="toggleLocations()">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin">
@@ -120,30 +124,31 @@
             <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
             <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16" /></svg>
             <div class="search-categories">
-                <input type="text" id="search-input" onfocus="toggleCategoriesNav(true)" onblur="toggleCategoriesNav(false)" placeholder="Type jobb">
-                    <div class="Categories-nav">
-                        <p>Barnepass</p>
-                        <p>Gressklipping</p>
-                        <p>Løvrydding</p>
-                        <p>Snømåking</p>
-                        <p>Hundelufting</p>
-                        <p>Vaske biler</p>
-                        <p>Selge produkter</p>
-                        <p>Lekerengjøring</p>
-                        <p>Plantepleie</p>
-                        <p>Bake og selge kaker</p>
-                        <p>Hjemmeorganisering</p>
-                        <p>Hente posten</p>
-                        <p>Babysitting</p>
-                        <p>Male gjerder</p>
-                        <p>Småreparasjoner</p>
-                        <p>Levere aviser</p>
-                        <p>Organisere garasjesalg</p>
-                        <p>Datatjenester for eldre</p>
-                        <p>Hjelpe med hagearbeid</p>
-                        <p>Vannplanter for naboer</p>
-                        <p>Hjelpe til med å flytte</p>
-                    </div>
+                <input type="text" id="search-input" onfocus="toggleCategoriesNav(true)"
+                        onblur="toggleCategoriesNav(false)" placeholder="Type job">
+                <div class="Categories-nav">
+                    <p>Barnepass</p>
+                    <p>Gressklipping</p>
+                    <p>Løvrydding</p>
+                    <p>Snømåking</p>
+                    <p>Hundelufting</p>
+                    <p>Vaske biler</p>
+                    <p>Selge produkter</p>
+                    <p>Lekerengjøring</p>
+                    <p>Plantepleie</p>
+                    <p>Bake og selge kaker</p>
+                    <p>Hjemmeorganisering</p>
+                    <p>Hente posten</p>
+                    <p>Babysitting</p>
+                    <p>Male gjerder</p>
+                    <p>Småreparasjoner</p>
+                    <p>Levere aviser</p>
+                    <p>Organisere garasjesalg</p>
+                    <p>Datatjenester for eldre</p>
+                    <p>Hjelpe med hagearbeid</p>
+                    <p>Vannplanter for naboer</p>
+                    <p>Hjelpe til med å flytte</p>
+                </div>
             </div>
         </div>
           <div class="search-salary">
@@ -511,7 +516,7 @@
         </div>
        </div>
 
-       
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="JavaScript/main.js"></script>
 </body>
 </html>

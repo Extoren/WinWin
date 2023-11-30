@@ -235,14 +235,13 @@ body {
   
   .Categories-nav {
     margin-top: 15px;
-    position: absolute; /* Add position absolute to the .Categories-nav */
-    top: 100%; /* Position it below the text input */
+    position: absolute;
+    top: 100%;
     right: -150px;
     left: -50px;
     max-height: 400px;
     text-align: left;
     font-size: 10pt;
-    display: none;
     background-color: var(--header-bg-color);
     z-index: 1;
     padding: 20px;
@@ -251,14 +250,20 @@ body {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     border-bottom: 1px solid var(--Hover-color);
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
   }
 
   input:focus + .Categories-nav {
-    max-height: 400px; /* Set the reduced height when the input is focused */
+    max-height: auto; /* Set the reduced height when the input is focused */
+    visibility: visible;
+    opacity: 1;
+    display: block;
   }
   
   input:not(:focus) + .Categories-nav {
-    max-height: 400px; /* Set the original height when the input is not focused */
+    display: block;
   }
   
   .Categories-nav p {
@@ -505,6 +510,39 @@ body {
   font-size: 16px;
   color: #333;
   margin-bottom: 10px;
+}
+
+.full-text {
+  display: none;
+}
+
+.short-text {
+  display: inline;
+}
+
+@media screen and (min-width: 500px) {
+  .full-text {
+    display: inline;
+  }
+  .short-text {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 350px) {
+  #Color {
+    font-size: 8pt;
+  }
+}
+
+#Color {
+  color: var(--placeholder-color) !important;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center; 
+  float: right; 
+  padding: 10px;
 }
 
 .type-container {
@@ -934,6 +972,12 @@ body {
 .detail-page .searched-bar {
   display: none; }
 
+@media screen and (max-width: 1410px) {
+  #Color {
+    float: left;
+  }
+}
+
 @media screen and (max-width: 1300px) {
   .detail-page .search-type {
     display: none; }
@@ -961,11 +1005,15 @@ body {
     margin-left: 0;
     margin-top: 6px; } }
 
-@media screen and (max-width: 930px) {
+@media screen and (max-width: 1030px) {
   .search-job, .search-salary {
     display: none; }
   .search-bar {
-    width: auto; } }
+    width: auto; } 
+  .search-location {
+    display: none; 
+  }
+  }
 
 @media screen and (max-width: 760px) {
   .detail-page .job-overview-cards {
@@ -998,12 +1046,12 @@ body {
     display: none; } }
 
 @media screen and (max-width: 520px) {
-  .search.item {
-    display: none; }
   .search-bar {
     flex-grow: 1; }
-  .search-bar input {
-    padding: 0 0 0 30px; }
+  .search-bar .search.item {
+    /* Make it appear on the left*/
+    left: 0; 
+  }
   .search-button {
     margin-left: 16px; }
   .searched-bar {
@@ -1016,6 +1064,13 @@ body {
   .logo p {
     display: none;
   }
+  #Color {
+    float: right;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  
 }
 
 @media screen and (max-width: 380px) {
