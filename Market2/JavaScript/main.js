@@ -47,3 +47,40 @@ function toggleLocations() {
   otherLocations.style.display = (otherLocations.style.display === 'none' || otherLocations.style.display === '') ? 'block' : 'none';
 }
 
+
+function toggleCategoriesNav(show) {
+  var categoriesNav = document.querySelector('.Categories-nav');
+  categoriesNav.style.display = show ? 'block' : 'none';
+}
+
+
+function filterCategoriesNav() {
+  const input = document.getElementById('search-input');
+  const categories = document.getElementsByClassName('Categories-nav')[0].getElementsByTagName('p');
+
+  input.addEventListener('input', () => {
+    const filter = input.value.toLowerCase();
+    for (let i = 0; i < categories.length; i++) {
+      const category = categories[i];
+      const categoryName = category.textContent.toLowerCase();
+      if (categoryName.startsWith(filter)) {
+        category.style.display = 'block';
+      } else {
+        category.style.display = 'none';
+      }
+    }
+  });
+
+  for (let i = 0; i < categories.length; i++) {
+    const category = categories[i];
+    category.addEventListener('click', () => {
+      input.value = category.textContent;
+    });
+  }
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  filterCategoriesNav();
+});
+
+

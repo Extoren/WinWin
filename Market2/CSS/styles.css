@@ -211,6 +211,7 @@ body {
   }
   
   .categories {
+    position: relative;
     overflow: hidden;
     height: 56px;
     white-space: nowrap;
@@ -227,8 +228,54 @@ body {
   .category-item i {
     text-decoration: none;
   }
+
+  .search-categories {
+    position: relative; /* Add position relative to the parent container */
+  }
   
-  /* Optional: Add border between category items */
+  .Categories-nav {
+    margin-top: 15px;
+    position: absolute; /* Add position absolute to the .Categories-nav */
+    top: 100%; /* Position it below the text input */
+    right: -150px;
+    left: -50px;
+    max-height: 400px;
+    text-align: left;
+    font-size: 10pt;
+    display: none;
+    background-color: var(--header-bg-color);
+    z-index: 1;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom: 1px solid var(--Hover-color);
+  }
+
+  input:focus + .Categories-nav {
+    max-height: 400px; /* Set the reduced height when the input is focused */
+  }
+  
+  input:not(:focus) + .Categories-nav {
+    max-height: 400px; /* Set the original height when the input is not focused */
+  }
+  
+  .Categories-nav p {
+    display: block;
+    padding: 10px;
+    background-color: transparent;
+  }
+
+  .Categories-nav p:hover {
+    background-color: var(--alert-bg-color);
+    cursor: pointer;
+  }
+  
+  input:focus + #category-menu .category-menu-item {
+    display: block;
+  }
+  
   .category-item:not(:last-child) {
     border-right: 1px solid var(--search-border-color);
   }
@@ -317,7 +364,7 @@ body {
 }
 
 .other-locations p:hover {
-    background-color: #f0f0f0;
+    background-color: var(--alert-bg-color);
 }
 
 .search-location,
@@ -333,6 +380,7 @@ body {
   .search-location input,
   .search-job input,
   .search-salary input {
+    color: var(--body-color);
     width: 100%;
     height: 100%;
     display: block;
