@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WinWin</title>
+    <link rel="stylesheet" href="CSS/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+         <div class="logo">
+            <img src="Bilder/Logo_CC.png" alt="logo" id="logo"/>
+            <p>Winstinct!</p>
+         </div>
+         <div class="header-menu-container">
+            <div class="header-menu">
+                <a href="#" class="active">Finn Jobb</a>
+                <a href="#">FAQ</a>
+            </div>
+        </div>
+         <div class="user-settings">
+          <div class="dark-light">
+           <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" /></svg>
+          </div>
+          <div class="user-menu">
+           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-square">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" /></svg>
+          </div>
+          <!--<img class="user-profile" src="#" alt="">-->
+          <div class="user-name">Logg inn</div>
+         </div>
+        </div>
+        <div class="categories">
+            <div class="category">
+                <div class="category-menu">
+                    <div class="category-menu">
+                        <div class="category-item">
+                            <i class="fas fa-baby" style="color: #ffae00;"></i> Barnepass</div>
+                        <div class="category-item">
+                            <i class="fas fa-leaf" style="color: #ffae00;"></i> Gressklipping</div>
+                        <div class="category-item">
+                            <i class="fas fa-wind" style="color: #ffae00;"></i> Løvrydding</div>
+                        <div class="category-item">
+                            <i class="fas fa-snowflake" style="color: #ffae00;"></i> Snømåking</div>
+                        <div class="category-item">
+                            <i class="fas fa-dog" style="color: #ffae00;"></i> Hundelufting</div>
+                        <div class="category-item">
+                            <i class="fas fa-car" style="color: #ffae00;"></i> Vaske biler</div>
+                        <div class="category-item">
+                            <i class="fas fa-cookie-bite" style="color: #ffae00;"></i> Selge produkter</div>
+                        <div class="category-item">
+                            <i class="fas fa-broom" style="color: #ffae00;"></i> Lekerengjøring</div>
+                        <div class="category-item">
+                            <i class="fas fa-seedling" style="color: #ffae00;"></i> Plantepleie</div>
+                        <div class="category-item">
+                            <i class="fas fa-birthday-cake" style="color: #ffae00;"></i> Bake og selge kaker</div>
+                        <div class="category-item">
+                            <i class="fas fa-home" style="color: #ffae00;"></i> Hjemmeorganisering</div>
+                        <div class="category-item">
+                            <i class="fas fa-mail-bulk" style="color: #ffae00;"></i>Hente posten</div>
+                        <div class="category-item">
+                            <i class="fas fa-baby-carriage" style="color: #ffae00;"></i> Babysitting</div>
+                        <div class="category-item">
+                            <i class="fas fa-paint-roller" style="color: #ffae00;"></i> Male gjerder</div>
+                        <div class="category-item">
+                            <i class="fas fa-tools" style="color: #ffae00;"></i>Småreparasjoner</div>
+                        <div class="category-item">
+                            <i class="fas fa-newspaper" style="color: #ffae00;"></i> Levere aviser</div>
+                        <div class="category-item">
+                            <i class="fas fa-tags" style="color: #ffae00;"></i> Organisere garasjesalg</div>
+                        <div class="category-item">
+                            <i class="fas fa-laptop" style="color: #ffae00;"></i>Datatjenester for eldre</div>
+                        <div class="category-item">
+                            <i class="fas fa-seedling" style="color: #ffae00;"></i> Hjelpe med hagearbeid</div>
+                        <div class="category-item">
+                            <i class="fas fa-tint" style="color: #ffae00;"></i> Vannplanter for naboer</div>
+                        <div class="category-item">
+                            <i class="fas fa-truck" style="color: #ffae00;"></i> Hjelpe til med å flytte</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wrapper">
+         <div class="search-menu">
+          <div class="search-bar">
+              <div id="Color">
+                <span class="full-text">Velg en kategori ↑</span>
+                <span class="short-text">Velg ↑</span>
+              </div>
+            <div class="search item">Gressklipping
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x">
+                <path d="M18 6L6 18M6 6l12 12" />
+              </svg>
+            </div>
+          </div>
+          <div class="search-location" onclick="toggleLocations()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                <circle cx="12" cy="10" r="3" />
+            </svg>
+            Norge, <span class="Change"> Oslo</span>
+            <i class="fas fa-chevron-down" style="position: absolute; right: 10px;"></i>
+            <div class="other-locations" style="display: none;">
+                <p>Agder</p>
+                <p>Innlandet</p>
+                <p>Møre og Romsdal</p>
+                <p>Nordland</p>
+                <p class="selected-location">Oslo</p>
+                <p>Rogaland</p>
+                <p>Svalbard</p>
+                <p>Troms og Finnmark</p>
+                <p>Trøndelag</p>
+                <p>Vestfold og Telemark</p>
+                <p>Vestland</p>
+                <p>Viken</p>
+            </div>
+        </div>
+          <div class="search-job">
+           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-briefcase">
+            <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+            <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16" /></svg>
+            <div class="search-categories">
+                <input type="text" id="search-input" onfocus="toggleCategoriesNav(true)"
+                        onblur="toggleCategoriesNav(false)" placeholder="Type job">
+                <div class="Categories-nav">
+                    <p>Barnepass</p>
+                    <p>Gressklipping</p>
+                    <p>Løvrydding</p>
+                    <p>Snømåking</p>
+                    <p>Hundelufting</p>
+                    <p>Vaske biler</p>
+                    <p>Selge produkter</p>
+                    <p>Lekerengjøring</p>
+                    <p>Plantepleie</p>
+                    <p>Bake og selge kaker</p>
+                    <p>Hjemmeorganisering</p>
+                    <p>Hente posten</p>
+                    <p>Babysitting</p>
+                    <p>Male gjerder</p>
+                    <p>Småreparasjoner</p>
+                    <p>Levere aviser</p>
+                    <p>Organisere garasjesalg</p>
+                    <p>Datatjenester for eldre</p>
+                    <p>Hjelpe med hagearbeid</p>
+                    <p>Vannplanter for naboer</p>
+                    <p>Hjelpe til med å flytte</p>
+                </div>
+            </div>
+        </div>
+          <div class="search-salary">
+           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" fill="currentColor" stroke-width=".4">
+            <path d="M12.6 18H9.8a.8.8 0 010-1.5h2.8a.9.9 0 000-1.8h-1.2a2.4 2.4 0 010-4.7h2.8a.8.8 0 010 1.5h-2.8a.9.9 0 000 1.8h1.2a2.4 2.4 0 010 4.7z" stroke="currentColor" />
+            <path d="M12 20a.8.8 0 01-.8-.8v-2a.8.8 0 011.6 0v2c0 .5-.4.8-.8.8zM12 11.5a.8.8 0 01-.8-.8v-2a.8.8 0 011.6 0v2c0 .5-.4.8-.8.8z" stroke="currentColor" />
+            <path d="M21.3 23H2.6A2.8 2.8 0 010 20.2V3.9C0 2.1 1.2 1 2.8 1h18.4C22.9 1 24 2.2 24 3.8v16.4c0 1.6-1.2 2.8-2.8 2.8zM2.6 2.5c-.6 0-1.2.6-1.2 1.3v16.4c0 .7.6 1.3 1.3 1.3h18.4c.7 0 1.3-.6 1.3-1.3V3.9c0-.7-.6-1.3-1.3-1.3z" stroke="currentColor" />
+            <path d="M23.3 6H.6a.8.8 0 010-1.5h22.6a.8.8 0 010 1.5z" stroke="currentColor" /></svg>
+           <input type="text" placeholder="Lønnsområde">
+          </div>
+          <button class="search-button">Finn Jobb</button>
+         </div>
+
+         <div class="main-container">
+          <div class="search-type">
+            <div class="job-time">
+                <!-- I want a google maps map over norway-->
+                <div class="job-time">
+                    <p>Område i kart</p>
+                    <input id="search-box" type="text" placeholder="Søk etter sted eller adresse">
+                    <div id="map"></div>
+                </div>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2243492.267531465!2d8.46894576840826!3d60.47202389999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46110e5b1a4a57e7%3A0x3624d96eae8f78f1!2sNorway!5e0!3m2!1sen!2s!4v1633965196208!5m2!1sen!2s" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <div class="job-time">
+                <div class="job-time-title">Område</div>
+                <div class="job-wrapper">
+                    <div class="type-container">
+                     <input type="checkbox" id="job1" class="job-style">
+                     <label for="job1">Agder</label>
+                     <span class="job-number">0</span>
+                    </div>
+                    <div class="type-container">
+                     <input type="checkbox" id="job2" class="job-style">
+                     <label for="job2">Innlandet</label>
+                     <span class="job-number">0</span>
+                    </div>
+                    <div class="type-container">
+                     <input type="checkbox" id="job3" class="job-style">
+                     <label for="job3">Møre og Romsdal</label>
+                     <span class="job-number">0</span>
+                    </div>
+                    <div class="type-container">
+                     <input type="checkbox" id="job4" class="job-style">
+                     <label for="job4">Nordland</label>
+                     <span class="job-number">0</span>
+                    </div>
+                    <div class="type-container">
+                     <input type="checkbox" id="job5" class="job-style" checked>
+                     <label for="job5">Oslo</label>
+                     <span class="job-number">1</span>
+                    </div>
+                    <div class="type-container">
+                     <input type="checkbox" id="job1" class="job-style">
+                     <label for="job1">Rogaland</label>
+                     <span class="job-number">0</span>
+                    </div>
+                    <div class="type-container">
+                     <input type="checkbox" id="job2" class="job-style">
+                     <label for="job2">Svalbard</label>
+                     <span class="job-number">0</span>
+                    </div>
+                    <div class="type-container">
+                     <input type="checkbox" id="job3" class="job-style">
+                     <label for="job3">Troms og Finnmark</label>
+                     <span class="job-number">0</span>
+                    </div>
+                    <div class="type-container">
+                     <input type="checkbox" id="job4" class="job-style">
+                     <label for="job4">Trøndelag</label>
+                     <span class="job-number">0</span>
+                    </div>
+                    <div class="type-container">
+                     <input type="checkbox" id="job5" class="job-style">
+                     <label for="job5">Vestfold og Telemark</label>
+                     <span class="job-number">0</span>
+                    </div>
+                    <div class="type-container">
+                     <input type="checkbox" id="job4" class="job-style">
+                     <label for="job4">Vestland</label>
+                     <span class="job-number">0</span>
+                    </div>
+                    <div class="type-container">
+                     <input type="checkbox" id="job5" class="job-style">
+                     <label for="job5">Viken</label>
+                     <span class="job-number">0</span>
+                    </div>
+                   </div>
+            </div>
+           <div class="job-time">
+            <div class="job-time-title">Ansettelsestype</div>
+            <div class="job-wrapper">
+             <div class="type-container">
+              <input type="checkbox" id="job1" class="job-style">
+              <label for="job1">Heltidsjobber</label>
+              <span class="job-number">0</span>
+             </div>
+             <div class="type-container">
+              <input type="checkbox" id="job2" class="job-style">
+              <label for="job2">Deltidsjobber</label>
+              <span class="job-number">0</span>
+             </div>
+             <div class="type-container">
+              <input type="checkbox" id="job3" class="job-style">
+              <label for="job3">Eksterne jobber</label>
+              <span class="job-number">0</span>
+             </div>
+             <div class="type-container">
+              <input type="checkbox" id="job4" class="job-style">
+              <label for="job4">Kontrakt</label>
+              <span class="job-number">0</span>
+             </div>
+             <div class="type-container">
+              <input type="checkbox" id="job5" class="job-style" checked>
+              <label for="job5">Små jobber</label>
+              <span class="job-number">1</span>
+             </div>
+            </div>
+           </div>
+           <div class="job-time">
+            <div class="job-time-title">Ansiennitetsnivå</div>
+            <div class="job-wrapper">
+             <div class="type-container">
+              <input type="checkbox" id="job7" class="job-style" checked>
+              <label for="job7">Studentnivå</label>
+              <span class="job-number">1</span>
+             </div>
+             <div class="type-container">
+              <input type="checkbox" id="job8" class="job-style">
+              <label for="job8">Inngangsnivå</label>
+              <span class="job-number">0</span>
+             </div>
+             <div class="type-container">
+              <input type="checkbox" id="job9" class="job-style">
+              <label for="job9">Midtnivå</label>
+              <span class="job-number">0</span>
+             </div>
+             <div class="type-container">
+              <input type="checkbox" id="job10" class="job-style">
+              <label for="job10">Seniornivå</label>
+              <span class="job-number">0</span>
+             </div>
+             <div class="type-container">
+              <input type="checkbox" id="job11" class="job-style">
+              <label for="job11">Regissører</label>
+              <span class="job-number">0</span>
+             </div>
+             <div class="type-container">
+              <input type="checkbox" id="job12" class="job-style">
+              <label for="job12">VP eller over</label>
+              <span class="job-number">0</span>
+             </div>
+            </div>
+           </div>
+           <div class="job-time">
+            <div class="job-time-title">Lønnsområde</div>
+            <div class="job-wrapper">
+             <div class="type-container">
+              <input type="checkbox" id="job13" class="job-style" checked>
+              <label for="job13">0kr - 100kr</label>
+              <span class="job-number">1</span>
+             </div>
+             <div class="type-container">
+              <input type="checkbox" id="job14" class="job-style">
+              <label for="job14">100kr - 200kr</label>
+              <span class="job-number">0</span>
+             </div>
+             <div class="type-container">
+              <input type="checkbox" id="job15" class="job-style">
+              <label for="job15">200kr - 500kr</label>
+              <span class="job-number">0</span>
+             </div>
+             <div class="type-container">
+              <input type="checkbox" id="job16" class="job-style">
+              <label for="job16">500kr - 1500kr</label>
+              <span class="job-number">0</span>
+             </div>
+             <div class="type-container">
+              <input type="checkbox" id="job17" class="job-style">
+              <label for="job17">1500kr - 3000kr</label>
+              <span class="job-number">0</span>
+             </div>
+             <div class="type-container">
+              <input type="checkbox" id="job18" class="job-style">
+              <label for="job18">3000kr - 4000kr</label>
+              <span class="job-number">0</span>
+             </div>
+             <div class="type-container">
+              <input type="checkbox" id="job19" class="job-style">
+              <label for="job19">4000kr - 5000kr</label>
+              <span class="job-number">0</span>
+             </div>
+            </div>
+           </div>
+          </div>
+          <div class="searched-jobs">
+            <div class="searched-bar">
+             <div class="searched-show">Viser 1 jobb(er)</div>
+             <div class="searched-sort">Sorter etter: <span class="post-time">Nyeste Post </span><span class="menu-icon">▼</span></div>
+            </div>
+           <div class="job-cards">
+            <!-- Start here -->
+            <div class="job-card">
+             <div class="job-card-header">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" style="background-color:#fff">
+                    <rect width="100%" height="100%" fill="#fff" />
+                    <foreignObject width="100%" height="100%" style="background-color:#fff; display: flex; justify-content: center; align-items: center;">
+                      <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                        <i class="fas fa-leaf" style="color: #ffae00; font-size: 24px;"></i>
+                      </div>
+                    </foreignObject>
+                  </svg>
+                  <div class="menu-dot"></div>
+                </div>
+             <div class="job-card-title">Gressklipping</div>
+             <div class="job-card-subtitle">
+              Oppdraget ditt er å hjelpe til med å plante blomster og vannplanter for naboer.
+             </div>
+             <div class="job-card-price">
+                <br>
+                40 kr, -
+             </div>
+             <div class="job-detail-buttons">
+              <button class="search-buttons detail-button">Små jobber</button>
+              <button class="search-buttons detail-button">Null erfaring</button>
+              <button class="search-buttons detail-button">Studentnivå</button>
+              <div class="job-card-buttons">
+               <button class="search-buttons card-buttons">Søk Nå</button>
+              </div>
+             </div>
+             <!-- Ends here -->
+            </div>
+            
+            <!-- <div class="job-card">
+             <div class="job-card-header">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#fff" style="background-color:#1e1f26">
+               <path d="M24 7.6c0-.3 0-.5-.4-.6C12.2.2 12.4-.3 11.6 0 3 5.5.6 6.7.2 7.1c-.3.3-.2.8-.2 8.3 0 .9 7.7 5.5 11.5 8.4.4.3.8.2 1 0 11.2-8 11.5-7.6 11.5-8.4V7.6zm-1.5 6.5l-3.9-2.4L22.5 9zm-5.3-3.2l-4.5-2.7V2L22 7.6zM12 14.5l-3.9-2.7L12 9.5l3.9 2.3zm-.8-12.4v6L6.8 11 2.1 7.6zm-5.8 9.6l-3.9 2.4V9zm1.3 1l4.5 3.1v6l-9-6.3zm6 9.1v-6l4.6-3.1 4.6 2.8z" /></svg>
+              <div class="menu-dot"></div>
+             </div>
+             <div class="job-card-title">Product Designer</div>
+             <div class="job-card-subtitle">
+              The User Experience Designer position exists to create compelling and digital user experience through excellent design...
+             </div>
+             <div class="job-detail-buttons">
+              <button class="search-buttons detail-button">Full Time</button>
+              <button class="search-buttons detail-button">Min. 1 Year</button>
+              <button class="search-buttons detail-button">Senior Level</button>
+             </div>
+             <div class="job-card-buttons">
+              <button class="search-buttons card-buttons">Søk Nå</button>
+              
+             </div>
+            </div>-->
+           </div>
+           <div class="job-overview">
+            <div class="job-overview-cards">
+             <div class="job-overview-card">
+              <div class="job-card overview-card">
+               <div class="overview-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" style="background-color:#fff">
+                    <rect width="100%" height="100%" fill="#fff" />
+                    <foreignObject width="100%" height="100%" style="background-color:#fff; display: flex; justify-content: center; align-items: center;">
+                      <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                        <i class="fas fa-leaf" style="color: #ffae00; font-size: 24px;"></i>
+                      </div>
+                    </foreignObject>
+                  </svg>
+                <div class="overview-detail">
+                 <div class="job-card-title">Gressklipping</div>
+                 <div class="job-card-subtitle">
+                  (Adresse)
+                 </div>
+                </div>
+                <svg class="heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart">
+                 <path d="M20.8 4.6a5.5 5.5 0 00-7.7 0l-1.1 1-1-1a5.5 5.5 0 00-7.8 7.8l1 1 7.8 7.8 7.8-7.7 1-1.1a5.5 5.5 0 000-7.8z" /></svg>
+               </div>
+               <div class="job-overview-buttons">
+                <div class="search-buttons time-button">(Ansettelsestype)</div>
+                <div class="search-buttons level-button">(Ansiennitetsnivå)</div>
+                <div class="job-stat">Ny</div>
+                <div class="job-day">1d</div>
+               </div>
+              </div>
+             </div>
+             <!--<div class="job-overview-card">
+              <div class="job-card overview-card">
+               <div class="overview-wrapper">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#fff" style="background-color:#1e1f26">
+               <path d="M24 7.6c0-.3 0-.5-.4-.6C12.2.2 12.4-.3 11.6 0 3 5.5.6 6.7.2 7.1c-.3.3-.2.8-.2 8.3 0 .9 7.7 5.5 11.5 8.4.4.3.8.2 1 0 11.2-8 11.5-7.6 11.5-8.4V7.6zm-1.5 6.5l-3.9-2.4L22.5 9zm-5.3-3.2l-4.5-2.7V2L22 7.6zM12 14.5l-3.9-2.7L12 9.5l3.9 2.3zm-.8-12.4v6L6.8 11 2.1 7.6zm-5.8 9.6l-3.9 2.4V9zm1.3 1l4.5 3.1v6l-9-6.3zm6 9.1v-6l4.6-3.1 4.6 2.8z" /></svg>
+                <div class="overview-detail">
+                 <div class="job-card-title">Product Designer</div>
+                 <div class="job-card-subtitle">
+                  4517 Washington Ave. Syracuse.
+                 </div>
+                </div>
+                <svg class="heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart">
+                 <path d="M20.8 4.6a5.5 5.5 0 00-7.7 0l-1.1 1-1-1a5.5 5.5 0 00-7.8 7.8l1 1 7.8 7.8 7.8-7.7 1-1.1a5.5 5.5 0 000-7.8z" /></svg>
+               </div>
+               <div class="job-overview-buttons">
+                <div class="search-buttons time-button">Full Time</div>
+                <div class="search-buttons level-button">Senior Level</div>
+                <div class="job-stat">New</div>
+                <div class="job-day">4d</div>
+               </div>
+              </div>
+             </div>--> 
+            </div>
+            <div class="job-explain">
+             <img class="job-bg" src="https://www.deere.no/assets/images/region-2/products/commercial-mowing/front-rotary-mowers/1600t-wide-area-rotary-mower-r2c010728-hero.jpg" alt="">
+             <div class="job-logos">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" style="background-color:#f76754">
+               <path xmlns="http://www.w3.org/2000/svg" d="M0 .5h4.2v23H0z" fill="#042b48" data-original="#212121"></path>
+               <path xmlns="http://www.w3.org/2000/svg" d="M15.4.5a8.6 8.6 0 100 17.2 8.6 8.6 0 000-17.2z" fill="#fefefe" data-original="#f4511e"></path>
+              </svg>
+             </div>
+             <div class="job-explain-content">
+             <div class="job-title-wrapper">
+              <div class="job-card-title">UI /UX Designer</div>
+              <div class="job-action">
+               <svg class="heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart">
+                 <path d="M20.8 4.6a5.5 5.5 0 00-7.7 0l-1.1 1-1-1a5.5 5.5 0 00-7.8 7.8l1 1 7.8 7.8 7.8-7.7 1-1.1a5.5 5.5 0 000-7.8z" /></svg>
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
+              </div>
+              </div>
+              <div class="job-subtitle-wrapper">
+               <div class="company-name">(Navn Person)<span class="comp-location">(Adresse)</span></div>
+               <div class="posted">Lagt ut for ANTALL dag(er) siden<span class="app-number">0 applikasjoner</span></div>
+              </div>
+              <div class="explain-bar">
+               <div class="explain-contents">
+               <div class="explain-title">Erfaring</div>
+               <div class="explain-subtitle">(Erfaring)</div>
+                </div>
+               <div class="explain-contents">
+               <div class="explain-title">Type ansatt</div>
+               <div class="explain-subtitle">(Ansiennitetsnivå)</div>
+                </div>
+               <div class="explain-contents">
+               <div class="explain-title">Ansettelsestype</div>
+               <div class="explain-subtitle">(Ansettelsestype)</div>
+                </div>
+               <div class="explain-contents">
+               <div class="explain-title">Tilby lønn</div>
+               <div class="explain-subtitle">(Lønn)</div>
+                </div>
+              </div>
+              <div class="overview-text">
+               <div class="overview-text-header">Oversikt</div>
+               <div class="overview-text-subheader">(Ren tekst beskrivelse her)</div>
+              </div>
+              <div class="overview-text">
+               <div class="overview-text-header">Stillingsbeskrivelse</div>
+               <div class="overview-text-item">Tilleggsinfo</div>
+               <div class="overview-text-item">Tilleggsinfo</div>
+               <div class="overview-text-item">Tilleggsinfo</div>
+               <div class="overview-text-item">Tilleggsinfo</div>
+               <div class="overview-text-item">Tilleggsinfo</div>
+               <div class="overview-text-item">Tilleggsinfo</div>
+              </div>
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="JavaScript/main.js"></script>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyDINfGdaDlzZPCqwI6Dj2XsoL8ULGo-C3Q",
+          authDomain: "winwin-64fb0.firebaseapp.com",
+          projectId: "winwin-64fb0",
+          storageBucket: "winwin-64fb0.appspot.com",
+          messagingSenderId: "1094048771328",
+          appId: "1:1094048771328:web:9485b15d57f68a743ad7e5",
+          measurementId: "G-BS60XM5QPZ"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+      </script>
+</body>
+</html>
