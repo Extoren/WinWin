@@ -162,3 +162,22 @@ window.addEventListener('resize', function() {
     });
   }
 });
+
+
+const changeLocation = () => {
+  const osloElement = document.querySelector('.Change');
+  const otherLocations = document.querySelectorAll('.other-locations p');
+
+  // Add event listeners to each <p> element in .other-locations
+  otherLocations.forEach((location) => {
+    location.addEventListener('click', () => {
+      // Get the text content of the clicked location
+      const newLocation = location.textContent;
+
+      // Update the text content of the .Change element
+      osloElement.textContent = newLocation;
+    });
+  });
+};
+
+changeLocation();
