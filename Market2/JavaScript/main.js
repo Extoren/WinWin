@@ -181,3 +181,60 @@ const changeLocation = () => {
 };
 
 changeLocation();
+
+
+
+
+// Select the parent of the "search item" div
+var searchItemParent = document.querySelector('.search.item').parentNode;
+
+// Select all category items
+var categoryItems = document.querySelectorAll('.category-item');
+
+// Loop through each category item
+categoryItems.forEach(function(item) {
+  // Add click event listener
+  item.addEventListener('click', function() {
+    // Check if a "search item" div already exists
+    var existingSearchItem = searchItemParent.querySelector('.search.item');
+    
+    // If it does, remove it
+    if (existingSearchItem) {
+      searchItemParent.removeChild(existingSearchItem);
+    }
+
+    // Create a new "search item" div
+    var newSearchItem = document.createElement('div');
+    newSearchItem.className = 'search item';
+    newSearchItem.innerHTML = `
+      ${this.textContent.trim()}
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x">
+        <path d="M18 6L6 18M6 6l12 12" />
+      </svg>
+    `;
+
+    // Append the new "search item" div to its parent
+    searchItemParent.appendChild(newSearchItem);
+
+    // Select the SVG element inside the "search item" div
+    var closeButton = newSearchItem.querySelector('svg');
+
+    // Add click event listener to the SVG element
+    closeButton.addEventListener('click', function() {
+      // Remove the "search item" div
+      searchItemParent.removeChild(newSearchItem);
+    });
+  });
+});
+
+// Select the initial "search item" div
+var initialSearchItem = document.querySelector('.search.item');
+
+// Select the SVG element inside the initial "search item" div
+var initialCloseButton = initialSearchItem.querySelector('svg');
+
+// Add click event listener to the SVG element
+initialCloseButton.addEventListener('click', function() {
+  // Remove the initial "search item" div
+  searchItemParent.removeChild(initialSearchItem);
+});

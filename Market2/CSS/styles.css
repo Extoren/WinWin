@@ -280,10 +280,7 @@ body {
   input:focus + #category-menu .category-menu-item {
     display: block;
   }
-  
-  .category-item:not(:last-child) {
-    border-right: 1px solid var(--search-border-color);
-  }
+
 
   .job-card-price,
 .job-detail-button,
