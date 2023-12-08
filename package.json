@@ -3,6 +3,7 @@
     "nodejs": "^0.0.0"
   },
   "scripts": {
-    "build": "firebase deploy --only hosting"
+    "build": "npm ci && npm run build",
+    "deploy": "firebase deploy --only hosting"
   }
 }
