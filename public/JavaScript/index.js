@@ -42,7 +42,7 @@ function register() {
     }
 
     // On with Auth
-    createUserWithEmailAndPassword(auth, Email, Password)
+    auth.createUserWithEmailAndPassword(Email, Password)
     .then((userCredential) => {
         // User created, now store the additional data
         const user = userCredential.user;
@@ -61,6 +61,13 @@ function register() {
         const errorMessage = error.message;
         console.log("Error code: " + errorCode);
         console.log("Error message: " + errorMessage);
+        alert("Error: " + error.message);
+    });
+
+    db.ref('.info/connected').on('value', (snapshot) => {
+        if (snapshot.val() === false) {
+            alert("Cannot connect to the database. Please check your internet connection.");
+        }
     });
 }
 
