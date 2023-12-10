@@ -238,3 +238,46 @@ initialCloseButton.addEventListener('click', function() {
   // Remove the initial "search item" div
   searchItemParent.removeChild(initialSearchItem);
 });
+
+function showLoginForm() {
+  document.querySelector('.login').style.display = 'block';
+  document.querySelector('.register').style.display = 'none';
+  document.querySelector('.info').style.display = 'none';
+  document.querySelector('.contents').style.display = 'none';
+  document.querySelector('.box.official').style.display = 'none';
+  document.querySelector('.box.family').style.display = 'none';
+  document.querySelector('.box.family').style.display = 'block';
+  document.querySelector('.box.official').style.display = 'block';
+  document.querySelector('.arrow-left').style.display = 'none';
+}
+
+function showRegisterForm() {
+  document.querySelector('.login').style.display = 'none';
+  document.querySelector('.register').style.display = 'block';
+  document.querySelector('.info').style.display = 'block';
+}
+
+function toggleActive(id) {
+  // Get the active-bg element
+  var activeBg = document.getElementById('active-bg');
+
+  // Calculate the new position of the active-bg
+  var newPosition = (id === 'register') ? '50%' : '0';
+
+  // Update the left property of the active-bg
+  activeBg.style.left = newPosition;
+
+  // Get the current active element
+  var activeElement = document.querySelector('.form-menu span.active');
+
+  // Remove the 'active' class from the current active element
+  if (activeElement) {
+      activeElement.classList.remove('active');
+  }
+
+  // Add the 'active' class to the clicked element
+  var clickedElement = document.getElementById(id);
+  clickedElement.classList.add('active');
+}
+
+
