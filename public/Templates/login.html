@@ -57,7 +57,7 @@
                         <input type="email" placeholder="Email" required>
                         <input type="password" placeholder="Passord" required>
                         <a href="#" id="glømt">Glømt passordet?</a>
-                        <button type="submit">Logg Inn</button>
+                        <button type="submit" onclick="login()">Logg Inn</button>
                     </form>
                 </div>
                 <div class="form-section register" style="display: none;">
@@ -69,13 +69,13 @@
                     <div class="contents">
                         <h2>Registrer</h2>
                         <form id="registerForm">
-                            <input type="text" placeholder="Navn" required>
-                            <input type="text" placeholder="Etternavn" required>
-                            <input type="email" placeholder="Email" required>
-                            <input type="password" placeholder="Passord" required>
-                            <input type="password" placeholder="Bekreft Passord" required>
-                            <input type="date" placeholder="Fødselsdato" required>
-                            <input type="text" placeholder="Addresse" required>
+                            <input type="text" id="name" placeholder="Navn" required>
+                            <input type="text" id="lastName" placeholder="Etternavn" required>
+                            <input type="email" id="email" placeholder="Email" required>
+                            <input type="password" id="password" placeholder="Passord" required>
+                            <input type="password" id="confirmPassword" placeholder="Bekreft Passord" required>
+                            <input type="date" id="date" placeholder="Fødselsdato" required>
+                            <input type="text" id="address" placeholder="Addresse" required>
                             <div class="radio-container">
                                 <div class="radio-wrapper">
                                     <input type="radio" id="option1" name="options" required>
@@ -94,7 +94,7 @@
                                 <input type="checkbox" id="checkmark2" name="checkmark2">
                                 <label for="checkmark2">Jeg ønsker nyheter og rapporter sendt til min email.</label>
                             </div>
-                            <button type="submit" id="submitButton">Registrer</button>
+                            <button type="submit" id="submitButton" onclick="register()">Registrer</button>
                         </form>
                     </div>
                 </div>
@@ -112,7 +112,18 @@
 
     </div>
 
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "firebase/app";
+        import { getAnalytics } from "firebase/analytics";
+        import { getDatabase } from "firebase/database";
+        import { getAuth } from "firebase/auth";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+    </script>
     <script src="../JavaScript/main.js"></script>
+    <script src="JavaScript/index.js"></script>
     <script>
     document.querySelector('.arrow-left').style.display = 'none';
 

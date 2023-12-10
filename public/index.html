@@ -525,31 +525,18 @@
         </div>
        </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="JavaScript/main.js"></script>
 
     <script type="module">
         // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-analytics.js";
+        import { initializeApp } from "firebase/app";
+        import { getAnalytics } from "firebase/analytics";
+        import { getDatabase } from "firebase/database";
+        import { getAuth } from "firebase/auth";
         // TODO: Add SDKs for Firebase products that you want to use
         // https://firebase.google.com/docs/web/setup#available-libraries
-      
-        // Your web app's Firebase configuration
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-        const firebaseConfig = {
-          apiKey: "AIzaSyDINfGdaDlzZPCqwI6Dj2XsoL8ULGo-C3Q",
-          authDomain: "winwin-64fb0.firebaseapp.com",
-          projectId: "winwin-64fb0",
-          storageBucket: "winwin-64fb0.appspot.com",
-          messagingSenderId: "1094048771328",
-          appId: "1:1094048771328:web:9485b15d57f68a743ad7e5",
-          measurementId: "G-BS60XM5QPZ"
-        };
-      
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
       </script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="JavaScript/main.js"></script>
+      <script src="JavaScript/index.js"></script>
 </body>
 </html>
