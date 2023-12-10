@@ -17,39 +17,52 @@ const firebaseConfig = {
     const db = firebase.database();
     const auth = firebase.auth();
 
-    function register() {
-        var email = document.getElementById('email').value;
-        var password = document.getElementById('password').value;
-    
-        // Additional user data
-        var name = document.getElementById('name').value;
-        var lastName = document.getElementById('lastName').value;
-        var birthDate = document.getElementById('birthDate').value;
-        var address = document.getElementById('address').value;
-        var userType = document.querySelector('input[name="userType"]:checked').value;
-    
-        // Create user with email and password
-        firebase.auth().createUserWithEmailAndPassword(email, password)
-            .then((userCredential) => {
-                // Signed in and User created 
-                var user = userCredential.user;
-    
-                // Add additional user data to the database
-                firebase.database().ref('users/' + user.uid).set({
-                    name: name,
-                    lastName: lastName,
-                    email: email,
-                    birthDate: birthDate,
-                    address: address,
-                    userType: userType
-                });
-    
-                console.log("User successfully registered and added to database");
-            })
-            .catch((error) => {
-                console.error("Error registering user: ", error);
-            });
+function register() {
+    Name = document.getElementById("name").value;
+    LastName = document.getElementById("lastName").value;
+    Email = document.getElementById("email").value;
+    Password = document.getElementById("password").value;
+    ConfirmPassword = document.getElementById("confirmPassword").value;
+    Date = document.getElementById("date").value;
+    Address = document.getElementById("address").value;
+
+    if (validate_fields(email) == false || validate_password(password) == false) {
+        alert("Email or password is invalid");
+        return;
+        // Stop running code
     }
+    if (Password !== ConfirmPassword) {
+        alert("Password and confirm password do not match");
+        return;
+    }
+    if (validate_fields(Name) == false || validate_fields(Date) == false || validate_fields(Address) == false) {
+        alert("One or more extra fields are invalid");
+        return;
+        // Stop running code
+    }
+
+    // On with Auth
+    createUserWithEmailAndPassword(auth, Email, Password)
+    .then((userCredential) => {
+        // User created, now store the additional data
+        const user = userCredential.user;
+        const userRef = ref(db, 'users/' + user.uid);
+        set(userRef, {
+            Name: Name,
+            LastName: LastName,
+            Email: Email,
+            Date: Date,
+            Address: Address
+        });
+    })
+    .catch((error) => {
+        // Handle errors here
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log("Error code: " + errorCode);
+        console.log("Error message: " + errorMessage);
+    });
+}
 
 function validate_email(email) {
     expression = /^[^@]+@\w+(\.\w+)+\w$/.test(str);
