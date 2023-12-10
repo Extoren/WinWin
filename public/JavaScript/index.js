@@ -42,33 +42,25 @@ function register() {
     }
 
     // On with Auth
-    auth.createUserWithEmailAndPassword(email, password)
-    .then(function() {
-
-        var user = auth.currentUser;
-
-        var database_ref = db.ref();
-
-        var user_data = {
-            email : email,
-            name : name,
-            last_name : last_name,
-            date : date,
-            address : address,
-            last_login : Date.now()
-        }
-
-        database_ref.child('users/' + user.uid).set(user_data);
-
-        alert("User created successfully!");
-
+    createUserWithEmailAndPassword(auth, Email, Password)
+    .then((userCredential) => {
+        // User created, now store the additional data
+        const user = userCredential.user;
+        const userRef = ref(db, 'users/' + user.uid);
+        set(userRef, {
+            Name: Name,
+            LastName: LastName,
+            Email: Email,
+            Date: Date,
+            Address: Address
+        });
     })
-    .catch(function(error) {
-        // Handle Errors here.
-        var error_code = error.code;
-        var error_message = error.message;
-        
-        alert(error_message);
+    .catch((error) => {
+        // Handle errors here
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log("Error code: " + errorCode);
+        console.log("Error message: " + errorMessage);
     });
 }
 
