@@ -12,10 +12,10 @@ const firebaseConfig = {
     };
 
     // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-    const db = getDatabase(app);
-    const auth = getAuth(app);
+    firebase.initializeApp(firebaseConfig);
+    const analytics = firebase.analytics();
+    const db = firebase.database();
+    const auth = firebase.auth();
 
 function register() {
     Name = document.getElementById("name").value;
