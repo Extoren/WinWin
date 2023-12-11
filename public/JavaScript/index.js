@@ -11,11 +11,12 @@ const firebaseConfig = {
     measurementId: "G-BS60XM5QPZ"
     };
 
+    const app = initializeApp(firebaseConfig);
+
     // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
     const analytics = firebase.analytics();
-    const db = firebase.database();
-    const auth = firebase.auth();
+    const db = getDatabase();
+    const auth = getAuth(app);
 
 function register() {
     Name = document.getElementById("name").value;
@@ -42,12 +43,11 @@ function register() {
     }
 
     // On with Auth
-    auth.createUserWithEmailAndPassword(Email, Password)
+    firebase.auth().createUserWithEmailAndPassword(email, password)
     .then((userCredential) => {
         // User created, now store the additional data
-        const user = userCredential.user;
-        const userRef = ref(db, 'users/' + user.uid);
-        set(userRef, {
+        var uid = userCredential.user.uid;
+        return firebase.database().ref('users/' + uid).set({
             Name: Name,
             LastName: LastName,
             Email: Email,
@@ -57,6 +57,7 @@ function register() {
     })
     .catch((error) => {
         // Handle errors here
+        console.error(error);
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log("Error code: " + errorCode);
@@ -66,7 +67,7 @@ function register() {
 
     db.ref('.info/connected').on('value', (snapshot) => {
         if (snapshot.val() === false) {
-            alert("Cannot connect to the database. Please check your internet connection.");
+            alert("Cannot connect to the database.");
         }
     });
 }
@@ -75,9 +76,11 @@ function validate_email(email) {
     expression = /^[^@]+@\w+(\.\w+)+\w$/.test(str);
     if(expression.test(email) == true) {
         // Email is good
+        alert("Email is valid");
         return true
     } else {
         // Email is bad
+        alert("Email is not valid");
         return false
     }
 }
@@ -85,9 +88,11 @@ function validate_email(email) {
 function validate_password(password) {
     if (password.length < 6) {
         // Password is bad
+        alert("Password is not valid");
         return false
     } else {
         // Password is good
+        alert("Password is valid");
         return true
     }
 }
