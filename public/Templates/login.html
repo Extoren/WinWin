@@ -114,9 +114,69 @@
 
 
     <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-        import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
-        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+        import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDINfGdaDlzZPCqwI6Dj2XsoL8ULGo-C3Q",
+            authDomain: "winwin-64fb0.firebaseapp.com",
+            databaseURL: "https://winwin-64fb0-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "winwin-64fb0",
+            storageBucket: "winwin-64fb0.appspot.com",
+            messagingSenderId: "1094048771328",
+            appId: "1:1094048771328:web:9485b15d57f68a743ad7e5",
+            measurementId: "G-BS60XM5QPZ"
+        };
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase();
+        const auth = getAuth(app);
+
+        let registerForm = document.getElementById("registerForm");
+
+        let RegisterUser = evt => {
+            evt.preventDefault();
+
+            let Name = document.getElementById("Name").value;
+            let LastName = document.getElementById("LastName").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let ConfirmPassword = document.getElementById("ConfirmPassword").value;
+            let Date = document.getElementById("Date").value;
+            let Address = document.getElementById("Address").value;
+            let registerForm = document.getElementById("registerForm");
+
+            createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // User registration successful
+                const user = userCredential.user;
+                console.log(user);
+                // Save additional user data to the database
+                const userRef = ref(db, `users/${user.uid}`);
+                set(userRef, {
+                    name: Name,
+                    lastName: LastName,
+                    email: email,
+                    dateOfBirth: Date,
+                    address: Address
+                })
+                    .then(() => {
+                        console.log("User data saved successfully");
+                    })
+                    .catch((error) => {
+                        console.log("Error saving user data:", error);
+                    });
+            })
+            .catch((error) => {
+                // User registration failed
+                alert(error.message);
+                console.log(error.message);
+                console.log(error.code);
+            });
+    }
+
+    registerForm.addEventListener("submit", RegisterUser);
     </script>
 
     <script src="../JavaScript/main.js"></script>
