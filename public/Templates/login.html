@@ -53,11 +53,11 @@
                 </div>
                 <div class="form-section login">
                     <h2>Logg Inn</h2>
-                    <form>
+                    <form id="signInForm">
                         <input type="email" placeholder="Email" required>
                         <input type="password" placeholder="Passord" required>
                         <a href="#" id="glømt">Glømt passordet?</a>
-                        <button type="submit" class="btn btn-primary">Logg Inn</button>
+                        <button type="submit" id="registerButton" class="btn btn-primary">Logg Inn</button>
                     </form>
                 </div>
                 <div class="form-section register" style="display: none;">
@@ -94,7 +94,7 @@
                                 <input type="checkbox" id="checkmark2" name="checkmark2">
                                 <label for="checkmark2">Jeg ønsker nyheter og rapporter sendt til min email.</label>
                             </div>
-                            <button type="submit" id="submitButton" class="btn btn-primary">Registrer</button>
+                            <button type="submit" id="signInButton" class="btn btn-primary">Registrer</button>
                         </form>
                     </div>
                 </div>
@@ -143,10 +143,16 @@
         let Address = document.getElementById("Address");
         let registerForm = document.getElementById("registerForm");
 
-        let RegisterUser = evt => {
-            evt.preventDefault();
+        // Attach event listener for registration form submission
+        document.getElementById("registerForm").addEventListener("submit", RegisterUser);
 
-            createUserWithEmailAndPassword(auth, email.value, password.value, confirmPassword.value)
+        // Attach event listener for sign-in form submission
+        document.getElementById("signInForm").addEventListener("submit", SignInUser);
+
+        function RegisterUser(event) {
+            event.preventDefault();
+
+            createUserWithEmailAndPassword(auth, email.value, password.value)
                 .then((credentials) => {
                     // Successful sign-in
                     set(ref(db, 'UsersAuthList/' + credentials.user.uid), {
@@ -168,8 +174,8 @@
 
         registerForm.addEventListener("submit", RegisterUser);
 
-        let SignInUser = evt => {
-            evt.preventDefault();
+        function SignInUser(event) {
+            event.preventDefault();
 
             signInWithEmailAndPassword(auth, email.value, password.value)
                 .then((credentials) => {
