@@ -526,11 +526,36 @@
        </div>
 
 
+    <h2 id="msg"></h2>
+    <h2 id="greet"></h2>
+
         
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
-        import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
-        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+    <script>
+        let UserCreds = JSON.parse(sessionStorage.getItem("user-cred"));
+        let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
+
+        let MsgHead = document.getElementById("msg");
+        let GreetHead = document.getElementById("greet");
+        let signOutBtn = document.getElementById("sign-out-btn");
+
+        let Signout = () =>{
+            sessionStorage.removeItem("user-cred");
+            sessionStorage.removeItem("user-info");
+            window.location.href = "Templates/login.html";
+        }
+
+        let CheckCred = () => {
+        if (!sessionStorage.removeItem("user-cred")) {
+            alert("User credentials not found!");
+            window.location.href = "Templates/login.html";
+        } else {
+            alert("User credentials found!");
+            // Rest of your code
+        }
+    }
+
+        window.addEventListener('load', CheckCred);
+        signOutBtn.addEventListener('click', Signout);
 
     </script>
     

@@ -57,7 +57,7 @@
                         <input type="email" placeholder="Email" required>
                         <input type="password" placeholder="Passord" required>
                         <a href="#" id="glømt">Glømt passordet?</a>
-                        <button type="submit" onclick="login()">Logg Inn</button>
+                        <button type="submit" class="btn btn-primary">Logg Inn</button>
                     </form>
                 </div>
                 <div class="form-section register" style="display: none;">
@@ -94,7 +94,7 @@
                                 <input type="checkbox" id="checkmark2" name="checkmark2">
                                 <label for="checkmark2">Jeg ønsker nyheter og rapporter sendt til min email.</label>
                             </div>
-                            <button type="submit" id="submitButton" onclick="register()">Registrer</button>
+                            <button type="submit" id="submitButton" class="btn btn-primary">Registrer</button>
                         </form>
                     </div>
                 </div>
@@ -115,8 +115,8 @@
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
-        import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
-        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+        import { getDatabase, get, child, set, ref } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
+        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyDINfGdaDlzZPCqwI6Dj2XsoL8ULGo-C3Q",
@@ -132,51 +132,69 @@
         const app = initializeApp(firebaseConfig);
         const db = getDatabase();
         const auth = getAuth(app);
+        const dbref = ref(db);
 
+        let Name = document.getElementById("Name");
+        let LastName = document.getElementById("LastName");
+        let email = document.getElementById("email");
+        let password = document.getElementById("password");
+        let ConfirmPassword = document.getElementById("ConfirmPassword");
+        let Date = document.getElementById("Date");
+        let Address = document.getElementById("Address");
         let registerForm = document.getElementById("registerForm");
 
         let RegisterUser = evt => {
             evt.preventDefault();
 
-            let Name = document.getElementById("Name").value;
-            let LastName = document.getElementById("LastName").value;
-            let email = document.getElementById("email").value;
-            let password = document.getElementById("password").value;
-            let ConfirmPassword = document.getElementById("ConfirmPassword").value;
-            let Date = document.getElementById("Date").value;
-            let Address = document.getElementById("Address").value;
-            let registerForm = document.getElementById("registerForm");
-
-            createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                // User registration successful
-                const user = userCredential.user;
-                console.log(user);
-                // Save additional user data to the database
-                const userRef = ref(db, `users/${user.uid}`);
-                set(userRef, {
-                    name: Name,
-                    lastName: LastName,
-                    email: email,
-                    dateOfBirth: Date,
-                    address: Address
-                })
-                    .then(() => {
-                        console.log("User data saved successfully");
-                    })
-                    .catch((error) => {
-                        console.log("Error saving user data:", error);
+            createUserWithEmailAndPassword(auth, email.value, password.value, confirmPassword.value)
+                .then((credentials) => {
+                    // Successful sign-in
+                    set(ref(db, 'UsersAuthList/' + credentials.user.uid), {
+                        Name: Name.value,
+                        LastName: LastName.value,
+                        email: email.value,
+                        password: password.value,
+                        Date: Date.value,
+                        Address: Address.value
                     });
-            })
-            .catch((error) => {
-                // User registration failed
-                alert(error.message);
-                console.log(error.message);
-                console.log(error.code);
-            });
-    }
+                })
+                .catch((error) => {
+                    alert(error.message)
+                    console.log(error.message);
+                    console.log(error.code);
+                });
+            }
 
-    registerForm.addEventListener("submit", RegisterUser);
+
+        registerForm.addEventListener("submit", RegisterUser);
+
+        let SignInUser = evt => {
+            evt.preventDefault();
+
+            signInWithEmailAndPassword(auth, email.value, password.value)
+                .then((credentials) => {
+                    // Successful sign-in
+                    get(child(dbref, 'UsersAuthList/' + credentials.user.uid)).then((snapshot)=>{
+                        if(snapshot.exists()){
+                            sessionStorage.setItem('user-info', JSON.stringify({
+                                Name: snapshot.val().Name,
+                                LastName: snapshot.val().LastName,
+                            }))
+                            sessionStorage.setItem('user-id', JSON.stringify(credentials.user));
+                            window.location.href = "../index.html";
+                        }
+                    });
+                })
+                .catch((error) => {
+                    // Failed sign-in
+                    alert(error.message);
+                    console.log(error.message);
+                    console.log(error.code);
+                });
+        }
+
+
+        registerForm.addEventListener("submit", SignInUser);
     </script>
 
     <script src="../JavaScript/main.js"></script>
