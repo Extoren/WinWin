@@ -114,25 +114,7 @@
 
 
     <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
-        import { getDatabase, get, child, set, ref } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
-        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyDINfGdaDlzZPCqwI6Dj2XsoL8ULGo-C3Q",
-            authDomain: "winwin-64fb0.firebaseapp.com",
-            databaseURL: "https://winwin-64fb0-default-rtdb.europe-west1.firebasedatabase.app",
-            projectId: "winwin-64fb0",
-            storageBucket: "winwin-64fb0.appspot.com",
-            messagingSenderId: "1094048771328",
-            appId: "1:1094048771328:web:9485b15d57f68a743ad7e5",
-            measurementId: "G-BS60XM5QPZ"
-        };
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const db = getDatabase();
-        const auth = getAuth(app);
-        const dbref = ref(db);
+            
 
         let Name = document.getElementById("Name");
         let LastName = document.getElementById("LastName");
